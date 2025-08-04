@@ -1,0 +1,99 @@
+// Obtém os dados do painel Grafana 
+const data = context.panel.data.series;
+
+// Verifica se há dados disponíveis
+if (!data || data.length === 0) {
+  console.error("Nenhum dado encontrado.");
+  return;
+}
+
+// Obtém o valor numérico a partir da query
+let gaugeValue = 0;
+data.forEach((series) => {
+  const valueField = series.fields.find((f) => f.type === 'number'); // Campo numérico
+  if (valueField) {
+    gaugeValue = valueField.values.get(0); // Obtém o valor
+  }
+});
+
+// Arredonda o valor para duas casas decimais
+gaugeValue = parseFloat(gaugeValue.toFixed(2));
+
+// Lógica para determinar a cor com base no uso da CPU
+let color;
+if (gaugeValue <= 45) {
+  color = '#90EE90';  // Verde
+} else if (gaugeValue <= 75) {
+  color = '#FFD700';  // Amarelo
+} else {
+  color = '#FF6347';  // Vermelho
+}
+
+// Configuração do gráfico estilo "Gauge" clean
+return {
+  series: [
+    {
+      type: 'gauge',
+      startAngle: 180,
+      endAngle: 0,
+      min: 0,
+      max: 100,
+      splitNumber: 10,
+      radius: '95%', // Aumenta a largura do gauge em relação ao espaço disponível
+      center: ['50%', '60%'], // Ajusta a posição do gráfico no painel. Horizontal no centro, vertical a 60% da altura
+      progress: {
+        show: true,
+        width: 45, // Aumenta a largura da barra de progresso
+        roundCap: true, // Adiciona bordas arredondadas
+        itemStyle: {
+          color: color, // Define a cor com base na lógica condicional
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          width: 45, // Aumenta a largura da linha do eixo
+          color: [
+            [gaugeValue / 100, color],  // Cor da parte preenchida (verde, amarelo ou vermelho)
+            [1, 'rgba(0, 0, 0, 0.1)'] // Parte não preenchida com borda branca
+          ],
+          type: 'solid',
+        },
+        // Adicionando a borda externa para a parte não preenchida
+        borderWidth: 5, // Espessura da borda externa
+        borderColor: '#FFF' // Cor da borda externa (branca)
+      },
+      axisTick: { show: false }, // Esconde os ticks
+      splitLine: { show: false }, // Esconde as linhas de divisão
+      axisLabel: { show: false }, // Esconde os rótulos
+      pointer: {
+        show: false // Desativa o ponteiro
+      },
+      detail: {
+        valueAnimation: true,
+        formatter: '{value}%',
+        color: '#FFF',
+        fontSize: 30,
+        fontWeight: '400',
+        offsetCenter: [0, '15%'], // Ajuste para centralizar corretamente, mesmo em diferentes tamanhos
+        fontFamily: 'Bebas Neue, sans-serif' // Fonte Bebas Neue
+      },
+      data: [
+        {
+          value: gaugeValue,
+          name: 'CPU UTILIZATION'
+        }
+      ],
+      title: {
+        show: true,
+        offsetCenter: [0, '50%'], // Ajuste centralizado do título
+        textStyle: {
+          fontSize: 30,
+          color: '#FFF',
+          fontWeight: '400',
+          fontFamily: 'Bebas Neue, sans-serif' // Fonte Bebas Neue
+        },
+        text: 'CPU UTILIZATION'
+      }
+    }
+  ]
+};
