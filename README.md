@@ -1,50 +1,45 @@
-# Códigos HTML/CSS – Repositório de Componentes Padrão  
-# HTML/CSS Code – Standard Components Repository
+# Códigos JavaScript – ECharts  
+# JavaScript Code – ECharts
 
-🧩 Este repositório reúne uma coleção de componentes HTML e CSS utilizados no dia a dia para construção de interfaces web simples, funcionais e reutilizáveis — especialmente úteis em ambientes como Grafana, sistemas internos, dashboards e portais web.  
-🧩 This repository gathers a collection of HTML and CSS components used daily to build simple, functional, and reusable web interfaces — especially useful for Grafana environments, internal systems, dashboards, and web portals.
+📊 Esta branch contém exemplos de gráficos criados com **JavaScript puro** utilizando a biblioteca **ECharts**. São códigos voltados à construção de visualizações interativas, ideais para dashboards, portais internos e ambientes como o Grafana.
 
----
-
-## 📚 Estrutura do repositório  
-## 📚 Repository Structure
-
-Os códigos estão organizados por tipo de componente, separados em branches específicas:  
-The code is organized by component type, separated into specific branches:
-
-- 🔹 **Headers**  
-  Estruturas de cabeçalhos com logotipo e ícones.  
-  Header structures with logo and icons.
-
-- 🔹 **Sub-Headers**  
-  Cabeçalhos secundários ou auxiliares.  
-  Secondary or auxiliary headers.
-
-- 🔹 **Menus**  
-  Menus de navegação principais.  
-  Main navigation menus.
-
-- 🔹 **Sub-Menus**  
-  Navegação complementar, como dropdowns ou barras secundárias.  
-  Complementary navigation like dropdowns or secondary bars.
+📊 This branch contains examples of charts built with **vanilla JavaScript** using the **ECharts** library. These are focused on creating interactive visualizations for dashboards, internal portals, or platforms like Grafana.
 
 ---
 
-## 📌 Como acessar os componentes  
-## 📌 How to access the components
+## 📦 Conteúdo desta branch / Contents of this branch
 
-Cada tipo de componente está disponível em uma branch específica.  
-Each component type is available in a specific branch.
-
-Use o seletor de branch no topo do repositório (📂 `Branch: main`) para navegar entre elas e visualizar ou baixar os arquivos desejados.  
-Use the branch selector at the top of the repository (📂 `Branch: main`) to navigate between them and view or download the desired files.
+- 📈 Gráficos de barras / Bar charts  
+- 📊 Gráficos de pizza / Pie charts  
+- 📉 Gráficos de linha / Line charts  
+- 🧩 Exemplos com estrutura HTML + JS independente  
+- 💡 Códigos simples e fáceis de personalizar
 
 ---
 
-✅ **Objetivo**  
-✅ **Purpose**
+## 🛠️ Tecnologias utilizadas / Technologies used
 
-Padronizar e agilizar o desenvolvimento de interfaces com elementos reutilizáveis, de fácil manutenção e integração.  
-To standardize and streamline interface development using reusable, easy-to-maintain, and integrable components.
+- JavaScript (ES6)  
+- ECharts (Apache ECharts)  
+- HTML5  
+- CSS3 (estilo básico para visualização)
+
+---
+
+## 📌 Observações / Notes
+
+- Os exemplos são **estáticos** e não requerem backend.  
+- Podem ser usados diretamente no Grafana via plugins ou em páginas HTML standalone.  
+- A biblioteca ECharts pode ser carregada via CDN ou localmente, conforme o exemplo.
+
+The examples are **static** and require no backend.  
+They can be embedded directly into Grafana panels or standalone HTML pages.  
+ECharts can be loaded via CDN or local files, depending on the sample.
+
+---
+
+✅ **Objetivo / Purpose**  
+Fornecer exemplos prontos e reutilizáveis de gráficos usando ECharts com JavaScript puro, facilitando integração com ambientes de visualização de dados.  
+Provide ready-to-use chart examples using ECharts with plain JavaScript, simplifying integration with data visualization environments.
 
 ---
