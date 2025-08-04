@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Dashboard</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .dashboard-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      padding: 2rem;
+      height: 100%;
+    }
+
+    /* Card principal */
+    .main-card {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Header do card principal */
+    .main-card-header {
+      text-align: center;
+      color: white;
+      font-size: 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    /* Container dos mini cards */
+    .mini-cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    /* Estilo de cada mini card */
+    .mini-card {
+      width: 180px;
+      height: auto;
+      background-color: rgba(0, 72, 140, 0.8);
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* Centraliza o conteúdo */
+      align-items: center;
+      text-align: center;
+      color: white;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+    }
+
+    .mini-card img {
+      width: 3rem;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .mini-card .value {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    /* Container para separar o label e value */
+    .mini-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 1rem;
+      /* Espaço entre o ícone e o texto */
+    }
+
+    .mini-card-bottom .value {
+      text-align: left;
+      /* Alinha o valor à esquerda */
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    .mini-card-bottom .specs {
+      text-align: right;
+      /* Alinha as specs à direita */
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard-container">
+    <!-- Card Principal -->
+    <div class="main-card">
+      <div class="main-card-header">
+        <span>CHANNEL 101</span>
+      </div>
+
+      <!-- Container dos mini cards -->
+      <div class="mini-cards-container">
+        <!-- Mini card: Height -->
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=177&format=png&color=FFFFFF" alt="Height Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Height</div>
+            <div class="specs">1920px</div>
+          </div>
+        </div>
+
+        <!-- Mini card: Width -->
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=177&format=png&color=FFFFFF" alt="Width Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Width</div>
+            <div class="specs">1080px</div>
+          </div>
+        </div>
+
+        <!-- Mini card: Status -->
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=11208&format=png&color=FFFFFF" alt="Status Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Status</div>
+            <div class="specs">Active</div>
+          </div>
+        </div>
+
+        <!-- Mini card: Model -->
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=177&format=png&color=FFFFFF" alt="Model Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Model</div>
+            <div class="specs">Model X</div>
+          </div>
+        </div>
+
+        <!-- Mini card: Temperature -->
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=18783&format=png&color=FFFFFF" alt="Temperature Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Temperature</div>
+            <div class="specs">45°C</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=18783&format=png&color=FFFFFF" alt="Temperature Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Temperature</div>
+            <div class="specs">45°C</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=18783&format=png&color=FFFFFF" alt="Temperature Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Temperature</div>
+            <div class="specs">45°C</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=18783&format=png&color=FFFFFF" alt="Temperature Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Temperature</div>
+            <div class="specs">45°C</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <img src="https://img.icons8.com/?size=100&id=18783&format=png&color=FFFFFF" alt="Temperature Icon">
+          <div class="mini-card-bottom">
+            <div class="value">Temperature</div>
+            <div class="specs">45°C</div>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>

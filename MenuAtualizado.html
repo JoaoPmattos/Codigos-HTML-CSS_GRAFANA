@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu HDTEC</title>
+
+    <style>
+        /* Estilo para o fundo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://storage.googleapis.com/flowbix-img/TimeGrafana/Wallpapers%20-%20Time%20GRAFANA%20-%20Prestek.png'); /*TROCAR PLANO DE FUNDO*/
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 100%;
+            margin-top: 5rem;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            /* Centraliza os itens horizontalmente */
+            align-items: center;
+            /* Centraliza os itens verticalmente */
+            gap: 10px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .button {
+            position: relative;
+            padding: 1rem;
+            background-color: #0f4c8b;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 5rem;
+            display: flex;
+            align-items: center;
+            /* Centraliza verticalmente */
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            gap: 1rem;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            outline: none;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            white-space: nowrap;
+            width: auto;
+            /* Garante que a largura se ajuste ao conteúdo */
+            height: 100%;
+            /* Garantir que a altura seja 100% */
+            text-align: center;
+            /* Alinha o texto ao centro */
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            border-color: #fff9;
+        }
+
+        .button:hover::before {
+            animation: shine 1.5s ease-out infinite;
+        }
+
+        .button::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100%;
+            background-image: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%);
+            top: 0;
+            left: -100px;
+            opacity: 0.6;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100px;
+            }
+
+            60% {
+                left: 100%;
+            }
+
+            to {
+                left: 100%;
+            }
+        }
+
+        /* Estilos gerais para o link dentro de .markdown-html */
+        .markdown-html a {
+            display: flex;
+            /* Usar flexbox para centralização */
+            align-items: center;
+            /* Centraliza o texto verticalmente */
+            justify-content: center;
+            /* Centraliza o texto horizontalmente */
+            text-decoration: none;
+            /* Remover decoração de texto */
+            color: white;
+            /* Cor do texto */
+            width: 100%;
+            /* Garante que o link ocupe toda a largura disponível */
+            height: 100%;
+            /* Garante que o link ocupe toda a altura disponível */
+            text-align: center;
+            /* Alinha o texto ao centro */
+            white-space: nowrap;
+            /* Impede que o texto quebre em várias linhas */
+        }
+
+        /* Outros estilos adicionais */
+        .markdown-html a:hover {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="button-container">
+
+            <!-- Primeira linha -->
+            <div class="button-row">
+                <a href="" class="button">EXEMPLO</a>
+            </div>
+
+            <!-- Segunda linha -->
+            <div class="button-row">
+                <a href=""
+                    class="button">EXEMPLO</a>
+            </div>
+
+            <!-- Terceira linha -->
+            <div class="button-row">
+                <a href=""
+                    class="button">EXEMPLO</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
