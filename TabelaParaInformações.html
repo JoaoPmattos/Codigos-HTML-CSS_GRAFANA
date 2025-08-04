@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker Dashboard</title>
+  <!-- Importando a fonte Bebas Neue do Google Fonts -->
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .unique-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .unique-card {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+      border-radius: 2rem;
+    }
+
+    .unique-card-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .unique-card-header span {
+      font-size: 2rem;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .unique-card-header img {
+      width: 2rem;
+      height: auto;
+      margin-left: 0.5rem;
+    }
+
+    .unique-card-item {
+      border: 1px solid #181818;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #00488C;
+      /* Gradiente azul */
+
+    }
+
+    .label-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .unique-card-item img {
+      width: 2rem;
+      height: auto;
+    }
+
+    .unique-card-item .label {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', sans-serif;
+      background: none;
+    }
+
+    .unique-card-item .value {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      text-align: right;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="unique-container">
+    <div class="unique-card">
+      <div class="unique-card-header">
+        <span></span>
+        <!-- <img src="https://img.icons8.com/?size=100&id=9928&format=png&color=FFFFFF" alt="Ícone"> -->
+      </div>
+
+      <div class="unique-card-item">
+        <div class="label-container">
+          <img src="https://img.icons8.com/?size=100&id=177&format=png&color=FFFFFF" alt="Icon">
+          <span class="label">Name:</span>
+        </div>
+        <span class="value">${name}</span>
+      </div>
+
+      <div class="unique-card-item">
+        <div class="label-container">
+          <img src="https://img.icons8.com/?size=100&id=177&format=png&color=FFFFFF" alt="Icon">
+          <span class="label">Model:</span>
+        </div>
+        <span class="value">${model}</span>
+      </div>
+
+      <div class="unique-card-item">
+        <div class="label-container">
+          <img src="https://img.icons8.com/?size=100&id=18783&format=png&color=FFFFFF" alt="Icon">
+          <span class="label">Temperature:</span>
+        </div>
+        <span class="value">${temperature} C°</span>
+      </div>
+
+      <div class="unique-card-item">
+        <div class="label-container">
+          <img src="https://img.icons8.com/?size=100&id=11208&format=png&color=FFFFFF" alt="Icon">
+          <span class="label">Status :</span>
+        </div>
+        <span class="value">${status}</span>
+      </div>
+        <div class="unique-card-item">
+        <div class="label-container">
+          <img src="https://img.icons8.com/?size=100&id=177&format=png&color=FFFFFF" alt="Icon">
+          <span class="label">Interface :</span>
+        </div>
+        <span class="value">${interface}</span>
+      </div>
+</body>
+
+</html>
