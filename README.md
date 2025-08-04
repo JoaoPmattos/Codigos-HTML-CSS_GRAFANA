@@ -1,8 +1,6 @@
-# C-digos-HTML-CSS
+# Codigos-HTML-CSS
 
-Códigos Padrão utilizados no dia a dia :
+Códigos Presentes nessa Branch:
 
-⦁	Headers
-⦁	Sub-Headers
 ⦁	Menus
-⦁	Sub-Menus
+
