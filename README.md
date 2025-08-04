@@ -1,6 +1,14 @@
-# Codigos-HTML-CSS
+# Códigos HTML/CSS – Menus
 
-Códigos Presentes nessa Branch:
+📂 **Conteúdo desta branch:**
+Esta branch contém códigos HTML e CSS focados em componentes de **menu** para uso com dashboards como o Grafana.
 
-⦁	Menus
+## 🔧 Arquivos disponíveis:
 
+- `MenuAtualizado.html` – Versão atualizada do menu principal.
+
+## 📝 Observações:
+- Esses arquivos são voltados para integração visual com plataformas de monitoramento.
+- Uso principal: personalização visual no Grafana ou aplicações similares.
+
+---
