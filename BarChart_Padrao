@@ -1,0 +1,179 @@
+// Inicialização dos dados
+let categories = [];
+let values = [];
+
+// Função para converter milissegundos para formato legível
+function formatTime(milliseconds) {
+  const seconds = Math.floor(milliseconds / 1000);
+  const days = Math.floor(seconds / (60 * 60 * 24));
+  if (days >= 1) return `${days} d`;
+  const hours = Math.floor(seconds / (60 * 60));
+  if (hours >= 1) return `${hours} h`;
+  const minutes = Math.floor(seconds / 60);
+  if (minutes >= 1) return `${minutes} min`;
+  return `${seconds} s`;
+}
+
+// Controlador de exibição dos nomes das categorias
+const showExFlowbix = false;
+
+// ✅ Função para limpar o nome da categoria corretamente para "Connection Time"
+function cleanCategoryName(category) {
+  const categoryString = typeof category === 'string' ? category : (category.text || category.toString());
+
+  // Regex para capturar "Client" e o que vem depois até o próximo ":"
+  const match = categoryString.match(/Client\s+[^\:]+/);
+
+  if (match) {
+    return match[0];  // Retorna a parte "Client flowbix.mapasbackbone"
+  }
+
+  return categoryString;  // Caso não encontre a parte, retorna o nome original
+}
+
+// Processar os dados do Grafana
+context.panel.data.series.forEach((series) => {
+  let categoryFieldIndex = null;
+  let valueFieldIndex = null;
+
+  series.fields.forEach((field, index) => {
+    if (field.type === 'string' && categoryFieldIndex === null) {
+      categoryFieldIndex = index;
+    }
+    if (field.type === 'number' && valueFieldIndex === null) {
+      valueFieldIndex = index;
+    }
+  });
+
+  if (categoryFieldIndex !== null && valueFieldIndex !== null) {
+    const categoryValues = series.fields[categoryFieldIndex].values;
+    const numericValues = series.fields[valueFieldIndex].values;
+
+    for (let i = 0; i < categoryValues.length; i++) {
+      const category = categoryValues.get(i);
+      const value = numericValues.get(i); // valor em milissegundos
+
+      const cleanedCategory = cleanCategoryName(category);
+
+      categories.push(cleanedCategory || `Category ${i}`);
+      values.push(value !== null && value !== undefined ? value : 0);
+    }
+  }
+});
+
+// Substituir todas as categorias por "Ex Flowbix" ou manter o nome original dependendo da configuração
+if (showExFlowbix) {
+  categories = categories.map(() => 'Ex Flowbix');
+}
+
+// Configuração do gráfico Bar Chart
+const option = {
+  backgroundColor: 'rgba(0, 0, 0, 0)',
+  title: {
+    text: '',
+    left: 'center',
+    top: '2%',
+    textStyle: {
+      color: '#FFFFFF',
+      fontWeight: 400,
+      fontSize: 20,
+      fontFamily: 'Bebas Neue, sans-serif',
+    },
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow',  // Definindo o tipo de ponteiro para sombra, útil em gráfico de barras
+    },
+    formatter: (params) => {
+      const formattedTime = formatTime(params[0].value);  // Pegando o valor do eixo Y
+      return `${params[0].name}: ${formattedTime}`;
+    },
+  },
+  legend: {
+    show: false,  // Removendo a legenda
+  },
+  grid: {
+    left: '5%',
+    right: '5%',
+    bottom: '10%',
+    top: '10%',
+    containLabel: true,
+  },
+  xAxis: {
+    type: 'category',
+    data: categories,  // Usando os nomes das categorias no eixo X
+    axisLabel: {
+      color: '#FFFFFF',
+      fontFamily: 'Bebas Neue, sans-serif',
+      fontSize: 16,
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#FFFFFF',  // Cor da linha do eixo X
+      },
+    },
+    axisTick: {
+      show: false,
+    },
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: {
+      color: '#FFFFFF',
+      fontFamily: 'Bebas Neue, sans-serif',
+      fontSize: 16,
+      formatter: (value) => formatTime(value),  // Formatando o valor no eixo Y
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#FFFFFF',  // Cor da linha do eixo Y
+      },
+    },
+    axisTick: {
+      show: false,
+    },
+  },
+  series: [
+    {
+      name: 'Connection Time',
+      type: 'bar',  // Mudando para gráfico de barras
+      data: values,
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 25,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 128, 128, 1)',
+          borderWidth: 2,
+          borderColor: 'rgba(0, 0, 0, 0.5)',
+        },
+      },
+      itemStyle: {
+        borderWidth: 2,  // Borda normal (não só no hover)
+        borderColor: 'rgba(0, 0, 0, 0.5)',
+        shadowBlur: 25,
+        shadowColor: 'rgba(0, 128, 128, 1)',
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        borderRadius: [10, 10, 0, 0],  // Borda arredondada nas barras
+        color: new context.echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: '#00E96A' },   // Verde claro
+          { offset: 1, color: '#217571' }    // Verde escuro
+        ]), // Aqui está a modificação da cor para o gradiente verde
+      },
+      label: {
+        show: true,
+        position: 'top',
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontFamily: 'Bebas Neue, sans-serif',
+        formatter: (params) => {
+          const formattedTime = formatTime(params.value);
+          return `${formattedTime}`;
+        },
+      },
+    },
+  ],
+};
+
+return option;
