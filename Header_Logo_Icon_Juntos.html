@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowbix Banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: linear-gradient(to bottom, #000000, #030A17, #071A2C, #0A253E, #0D304F, #071A2C, #030A17, #000000);
+
+    }
+
+    /*PAINEL "NO DATA" DO GRAFANA*/
+
+    .css-18o2w4z {
+      font-size: 10rem;
+      color: white;
+    }
+
+    /*PAINEL "NO DATA" DO GRAFANA*/
+
+    .css-1fxx2s4 {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem;
+    }
+
+    /*GAUGE DO GRAFANA*/
+    .flot-temp-elem {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+
+
+    }
+
+    /*GAUGE DO GRAFANA*/
+
+
+    /*PIE CHART DO GRAFANA*/
+    .css-t12fgu {
+      color: rgba(255, 255, 255, 1);
+      font-weight: 400 !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-size: 1.5rem;
+    }
+
+    /*PIE CHART DO GRAFANA*/
+
+
+    /* TEXTO DO STAT, OU PAINEIS E TALS */
+    .css-itdw1b-panel-container {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 1rem;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem;
+      color: white !important;
+    }
+
+    /* TEXTO DO STAT, OU PAINEIS E TALS */
+
+
+    /*ZABBIX PROBLEMS*/
+    .ReactTable .rt-thead.-header,
+    .panel-problems .ReactTable .rt-tr-group .rt-tr.-even {
+      border: none !important;
+      background: rgba(0, 0, 0, 0.2) !important;
+
+    }
+
+    .ReactTable .rt-thead .rt-resizable-header-content {
+      color: white;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.3rem;
+
+    }
+
+    .ReactTable .rt-tr {
+      color: white;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.3rem;
+
+    }
+
+    .panel-problems .ReactTable .rt-tr .rt-td.custom-expander i {
+      color: white !important;
+    }
+
+    .ReactTable .-pagination .-btn {
+      background: rgba(0, 0, 0, 0.2) !important;
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.3rem;
+      border-radius: 1rem !important;
+    }
+
+    .ReactTable .-pagination .-btn[disabled] {
+      opacity: 1 !important;
+
+    }
+
+    .ReactTable .-pagination .-pageInfo {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.3rem !important;
+
+    }
+
+    .ReactTable .-pagination input,
+    .ReactTable .-pagination select {
+      color: white !important;
+      background: rgba(0, 0, 0, 0.2) !important;
+      border-radius: 1rem !important;
+    }
+
+    .panel-problems .ReactTable .rt-tr-group {
+      border: none !important;
+
+    }
+
+    /*ZABBIX PROBLEMS*/
+
+    /* PAINEIS DO GRAFANA */
+    .css-1ijfwvk-panel-container {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 1.5rem;
+      color: white;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+    }
+
+    /* .css-kuoxoh-panel-content span {
+    color: white;
+    } */
+
+    /*FIM DA SESSÃO DOS PAINEIS DO GRAFANA */
+
+    /* INICIO DA SESSÃO DAS ROW */
+    .css-1d3xu67-Icon {
+      fill: white !important;
+    }
+
+    .css-6bn9eg {
+      background: rgba(0, 0, 0, 0.2);
+
+    }
+
+    .css-159dowq {
+      color: white;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem;
+
+    }
+
+    .dashboard-row__title {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+    }
+
+    .dashboard-row__panel_count {
+      font-size: 1.5rem !important;
+    }
+
+    /* FIM DA SESSÃO DAS ROW */
+
+    /*PAINEL TEXT DO GRAFANA*/
+    .css-7mshyc-panel-container {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 1.5rem;
+
+    }
+
+    /*PAINEL TEXT DO GRAFANA*/
+
+    /*TITULO DE QUALQUER PAINEL DO GRAFANA */
+    .css-4sw7w0 {
+      color: rgba(255, 255, 255, 1);
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem;
+    }
+
+    .css-biljvk-panel-title {
+      background: rgba(0, 0, 0, 0.2);
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      border-radius: 1rem;
+    }
+
+    /*TITULO DE QUALQUER PAINEL DO GRAFANA */
+
+
+
+    /*INICIO DA SESSÃO DOS TABLE DO GRAFANA */
+
+    .css-1kfgvg7-thead {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #0094FF 0%, #005BB5 100%);
+      /* Gradiente do azul claro para o azul escuro */
+      padding: 0;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .css-119zpr0 {
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+      text-transform: uppercase !important;
+    }
+
+    .css-1jj2cky-tableContentWrapper {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .css-8fjwhi-row {
+      border: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    .css-8fjwhi-row:last-child {
+      border-bottom: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    .css-1jj2cky-tableContentWrapper {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+
+    .css-8fjwhi-row {
+      color: rgba(255, 255, 255, 1) !important;
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+      text-transform: uppercase !important;
+    }
+
+    /*FIM DA SESSÃO DO TABLE */
+
+    /*BACKGROUND DO TIME SERIES
+    .uplot canvas {
+      background: rgba(0, 0, 0, 1);
+      border-radius: 1rem;
+    }
+    */
+
+
+    /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */
+    .ol-viewport {
+      border-radius: 1rem !important;
+      border: 1px solid rgba(204, 204, 220, 0.25) !important;
+    }
+
+    /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */
+
+
+
+
+    /*HEADER DA LEGEND DO TIME SERIES*/
+    .css-180sqb0,
+    .css-1l1pgpn {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .css-180sqb0,
+    .css-1l1pgpn {
+      color: rgba(255, 255, 255, 1);
+    }
+
+
+    /*TEXTO DA LEGEND DO TIME SERIES*/
+
+    .css-7pp3mx-LegendLabel {
+      text-transform: uppercase;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .css-14gwilc {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+
+    }
+
+    /*LINHA DE MAX, LAST E MEAN(TEXTO) DA LEGEND DO TIME SERIES*/
+    .css-s2uf1z {
+      color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    /*ICONES DE COR DA LEGENDA DO TIME SERIES*/
+    .css-1aj5l6t {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /*FIM DA SESSÃO DA LEGEND DO TIME SERIES*/
+
+    .css-n39kqr-cellContainerOverflow {
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .css-2qng6u-panel-container {
+      background: rgba(0, 0, 0, 0.2);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      border: none;
+    }
+
+    .css-11qjisw {
+      height: 100%;
+    }
+
+    .css-1i88p6p {
+      width: 100%;
+      margin: 0;
+      padding: 0rem 0rem 0rem 2rem;
+    }
+
+    .css-m0z7c1 {
+      height: 100%;
+      margin: 0;
+    }
+
+    /*INICIO DA SESSÃO BUSINESS VARIABLE*/
+    .css-1nmqu8c-input-wrapper {
+      background: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      /* Define a largura como 100% */
+      height: 100%;
+      /* Define a altura como 100% */
+      border: 0;
+      color: #FFFFFF;
+      border-radius: 2rem;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    /* TEXTO DO BUSINESS
+    .css-8nwx1l-singleValue {
+      color: #FFFFFF;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    } */
+
+    /*HEADER LAYOUT*/
+    .css-m0z7c1 label {
+      color: rgba(255, 255, 255, 1);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 2rem;
+      padding: 1rem;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    /*TEXTO QUANDO A VARIAVEL É NUMERO*/
+    .css-1pc1kg0-grafana-select-multi-value-container {
+      color: rgba(255, 255, 255, 1);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0);
+    }
+
+    /*TEXTO "CHOOSE" DO BUSINESS VARIABLE*/
+    .css-1n8tjau-placeholder {
+      color: rgba(255, 255, 255, 1);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    /*FIM DA SESSÃO BUSINESS VARIABLE*/
+
+
+    .dashboard-row--collapsed {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+
+
+    /*INCIO DA SESSÃO DO HEADER */
+
+    /* Contêiner principal do banner */
+    .flowbix-banner-container {
+      background: rgba(0, 0, 0, 0.2);
+      /* Fundo preto */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+      border-radius: 5rem;
+    }
+
+    /* Contêiner do conteúdo do banner */
+    .flowbix-banner-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #FFFFFF;
+      /* Texto branco */
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Estilo do logo */
+    .flowbix-logo {
+      height: 3rem;
+      /* Ajuste o tamanho conforme necessário */
+      width: auto;
+    }
+
+    /* Estilo do texto */
+    .flowbix-text {
+      font-size: 3rem;
+      color: #FFFFFF;
+      /* Texto branco */
+      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      /* Espaço entre o texto e o ícone */
+    }
+
+    /* Barra verde antes do texto */
+    .flowbix-divider {
+      color: #FFFFFF;
+      /* Verde Auzac */
+      font-size: 2rem;
+    }
+
+    .css-n39kqr-cellContainerOverflow {
+      color: white;
+    }
+
+    .css-18yh62t-panel-container {
+      border-radius: 1rem;
+      border: 1px solid white;
+      background-color: rgba(0, 14, 28, 1);
+      color: white;
+    }
+
+    canvas[data-zr-dom-id="zr_0"] {
+      border-radius: 1rem;
+      overflow: hidden;
+      /* Para garantir que o conteúdo interno respeite o border-radius */
+    }
+
+    /* Estilo do ícone de segurança */
+    .flowbix-security-icon {
+      width: 2.5rem;
+      height: auto;
+    }
+
+    /*FIM DA SESSÃO DO HEADER */
+  </style>
+</head>
+
+<body>
+  <!-- Estrutura do banner -->
+  <div class="flowbix-banner-container">
+    <div class="flowbix-banner-content">
+      <img src="https://storage.googleapis.com/flowbix-img/LogoFBX_noBck.png" alt="Logo Flowbix" class="flowbix-logo">
+      <span class="flowbix-divider">|</span>
+      <span class="flowbix-text">MONITORAMENTO DE LINKS
+        <!-- Ícone de segurança embutido ao lado do texto -->
+        <img src="https://img.icons8.com/?size=100&id=UvmcivoErCBL&format=png&color=FFFFFF" alt="Security Icon" class="flowbix-security-icon">
+      </span>
+    </div>
+  </div>
+</body>
+
+</html>
