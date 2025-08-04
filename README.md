@@ -1,8 +1,8 @@
-# Códigos HTML/CSS – Repositório de Componentes Padrão  
-# HTML/CSS Code – Standard Components Repository
+# Códigos HTML/CSS/JS – Repositório de Componentes Padrão  
+# HTML/CSS/JS Code – Standard Components Repository
 
-🧩 Este repositório reúne uma coleção de componentes HTML e CSS utilizados no dia a dia para construção de interfaces web simples, funcionais e reutilizáveis — especialmente úteis em ambientes como Grafana, sistemas internos, dashboards e portais web.  
-🧩 This repository gathers a collection of HTML and CSS components used daily to build simple, functional, and reusable web interfaces — especially useful for Grafana environments, internal systems, dashboards, and web portals.
+🧩 Este repositório reúne uma coleção de componentes HTML, CSS e JavaScript utilizados no dia a dia para construção de interfaces web simples, funcionais e reutilizáveis — especialmente úteis em ambientes como Grafana, sistemas internos, dashboards e portais web.  
+🧩 This repository gathers a collection of HTML, CSS, and JavaScript components used daily to build simple, functional, and reusable web interfaces — especially useful for Grafana environments, internal systems, dashboards, and web portals.
 
 ---
 
@@ -24,9 +24,13 @@ The code is organized by component type, separated into specific branches:
   Menus de navegação principais.  
   Main navigation menus.
 
-- 🔹 **Sub-Menus**  
-  Navegação complementar, como dropdowns ou barras secundárias.  
-  Complementary navigation like dropdowns or secondary bars.
+- 🔹 **Cards**  
+  Elementos visuais reutilizáveis em layout de bloco ou grade.  
+  Reusable visual elements in block or grid layout.
+
+- 🔹 **JavaScript (ECharts)**  
+  Códigos JS para visualizações de dados usando a biblioteca ECharts.  
+  JavaScript code for data visualizations using the ECharts library.
 
 ---
 
