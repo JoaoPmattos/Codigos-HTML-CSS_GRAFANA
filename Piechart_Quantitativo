@@ -1,0 +1,100 @@
+// Inicialização dos contadores
+let countUp = 0;
+let countDown = 0;
+
+// Processar os dados do Grafana
+context.panel.data.series.forEach((series) => {
+  const statusField = series.fields.find((field) => field.name === "Last *" && field.type === "number");
+  if (!statusField) return;
+
+  const statusValues = statusField.values;
+
+  for (let i = 0; i < statusValues.length; i++) {
+    const value = statusValues.get(i);
+    if (value === 1) {
+      countUp++;
+    } else if (value === 0) {
+      countDown++;
+    }
+  }
+});
+
+// Dados agregados para o pie chart
+const data = [
+  { name: 'Up', value: countUp },
+  { name: 'Down', value: countDown }
+];
+
+// Configuração do gráfico Pie Chart
+const option = {
+  backgroundColor: 'rgba(0, 0, 0, 0)',
+  title: {
+    text: '',
+    left: '2%',
+    top: '2%',
+    textStyle: {
+      color: '#FFFFFF',
+      fontWeight: 400,
+      fontSize: 22,
+      fontFamily: 'Bebas Neue, sans-serif',
+    },
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter: (params) => {
+      return `${params.name}: ${params.value}`;
+    },
+  },
+  legend: {
+    orient: 'horizontal',
+    left: 'center',
+    bottom: '2%',
+    textStyle: {
+      color: '#FFFFFF',
+      fontSize: 18,
+      fontFamily: 'Bebas Neue, sans-serif',
+    },
+  },
+  series: [
+    {
+      name: 'Status',
+      type: 'pie',
+      roseType: 'area',
+      radius: ['30%', '50%'],
+      center: ['50%', '50%'],
+      data: data,
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 25,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
+          borderWidth: 1,
+          borderColor: '#000000',
+        },
+      },
+      itemStyle: {
+        borderWidth: 1,
+        borderColor: '#000000',
+        shadowBlur: 15,
+        shadowColor: 'rgba(64, 224, 208, 0.3)',
+        borderRadius: 10,
+      },
+      label: {
+        fontSize: 18,
+        fontFamily: 'Bebas Neue, sans-serif',
+        formatter: '{b}\n{c}',
+        color: '#FFFFFF',
+      },
+      color: ['#73bf69', '#c4162a'], // verde para Up, vermelho para Down
+      labelLine: {
+        length: 25,
+        length2: 20,
+        lineStyle: {
+          color: '#FFFFFF',
+        },
+      },
+    },
+  ],
+};
+
+return option;
