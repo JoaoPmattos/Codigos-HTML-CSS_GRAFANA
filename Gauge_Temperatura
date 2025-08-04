@@ -1,0 +1,162 @@
+// Inicializa a variável para armazenar o valor do gauge
+let gaugeValue = null;
+
+// Processa os dados da tabela de forma dinâmica
+context.panel.data.series.forEach((series) => {
+  const fieldColumn = series.fields.find(f => f.name.toLowerCase().includes('field'));
+  const valueColumn = series.fields.find(f => f.name.toLowerCase().includes('last'));
+
+  if (fieldColumn && valueColumn) {
+    const fieldNames = fieldColumn.values.toArray();
+    const values = valueColumn.values.toArray();
+
+    // Usa o primeiro valor encontrado (ajuste se precisar processar vários)
+    if (values.length > 0) {
+      gaugeValue = parseFloat(values[0]); // Converte para número
+    }
+  }
+});
+
+// Se não encontrou um valor válido, define um padrão
+if (gaugeValue === null || isNaN(gaugeValue)) {
+  gaugeValue = 0;
+}
+
+// Arredonda o valor para duas casas decimais
+gaugeValue = parseFloat(gaugeValue.toFixed(2));
+
+// Define a cor do gauge com base no valor do gauge e no threshold
+let gaugeColor;
+
+if (gaugeValue <= 50) {
+  gaugeColor = '#00FF00'; // Verde
+} else if (gaugeValue <= 70) {
+  gaugeColor = '#FFA500'; // Laranja
+} else {
+  gaugeColor = '#FF0000'; // Vermelho
+}
+
+// Define a imagem com base no valor do gauge
+const imageUrl =
+  gaugeValue < 70
+    ? 'https://storage.googleapis.com/flowbix-img/IMG%20DASHBOARD/verrok.png'
+    : 'https://storage.googleapis.com/flowbix-img/IMG%20DASHBOARD/alrretasas.png';
+
+// Configuração do gráfico estilo "Gauge com imagem condicional"
+return {
+  graphic: [
+    {
+      type: 'image',
+      style: {
+        image: imageUrl,
+        width: 45, // Largura da imagem
+        height: 45, // Altura da imagem
+        x: 30, // Posição X
+        y: 125 // Posição Y ajustada para alinhar com o gráfico
+      }
+    }
+  ],
+  series: [
+    {
+      type: 'gauge',
+      startAngle: 130,
+      endAngle: -130,
+      min: 0,
+      max: 100, // Define o máximo como 100% para porcentagem
+      splitNumber: 20,
+      pointer: {
+        show: false,
+        width: 8,
+        length: '70%',
+        itemStyle: {
+          color: '#ffffff'
+        }
+      },
+      progress: {
+        show: true,
+        overlap: false,
+        roundCap: true,
+        clip: false,
+        itemStyle: {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 1,
+            y2: 0,
+            colorStops: [
+              { offset: 0, color: '#00E96A' },
+              { offset: 0.33, color: '#00E96A' },
+              { offset: 0.66, color: '#217571' },
+              { offset: 1, color: '#217571' }
+            ]
+          },
+          shadowBlur: 20,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          width: 20,
+          color: [
+            [gaugeValue / 100, gaugeColor], // Cor do preenchimento conforme threshold
+            [1, 'rgba(255, 255, 255, 0.2)'] // Tubo não preenchido
+          ]
+        }
+      },
+      axisTick: {
+        show: true,
+        distance: -25,
+        length: 8,
+        lineStyle: {
+          color: '#ffffff',
+          width: 1
+        }
+      },
+      splitLine: {
+        show: true,
+        distance: -30,
+        length: 15,
+        lineStyle: {
+          color: '#fff',
+          width: 2
+        }
+      },
+      axisLabel: {
+        distance: -20,
+        color: '#ffffff',
+        fontSize: 18,
+        fontFamily: 'Bebas Neue, sans-serif',
+        fontWeight: 400
+      },
+      title: {
+        show: true,
+        offsetCenter: [10, '-15%'],
+        textStyle: {
+          fontSize: 25,
+          color: '#ffffff',
+          fontFamily: 'Bebas Neue, sans-serif',
+          fontWeight: 400
+        },
+        text: 'USO DE MEMÓRIA'
+      },
+      detail: {
+        valueAnimation: true,
+        offsetCenter: [10, '30%'],
+        formatter: '{value} C°', // Exibe o valor com unidade %
+        color: '#ffffff',
+        fontSize: 45,
+        fontFamily: 'Bebas Neue, sans-serif',
+        fontWeight: 400
+      },
+      data: [
+        {
+          value: gaugeValue,
+          name: 'Temperature '
+        }
+      ],
+      radius: '65%',             // controla o tamanho do gauge
+      center: ['45%', '50%']
+    }
+  ]
+};
