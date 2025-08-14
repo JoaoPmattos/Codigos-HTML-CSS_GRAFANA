@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowbix Banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: linear-gradient(to bottom,
+          #000000 0%,
+          /* Preto absoluto */
+          #01080E 20%,
+          /* Preto com toque de azul */
+          #02121C 40%,
+          /* Azul petróleo bem escuro */
+          #021A28 70%,
+          /* Aproximando da cor principal */
+          #021C2C 100%
+          /* Cor principal */
+        );
+
+    }
+
+    /*.css-19gv2o1-panel-header {
+      justify-content: center !important;
+      text-align: center !important;
+      allign-itens: center !important;
+      display: inline;
+    }*/
+
+    .rt-tr.-even {
+      background: rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /*.css-kuoxoh-panel-content div {
+      border-radius: 1.5rem !important;
+    }*/
+    .css-kuoxoh-panel-content>div>div>div[style*="background: linear-gradient"] {
+      border-radius: 1.5rem !important;
+    }
+
+
+    /*DIV PARA EDITAR O ZABBIX PROBLEMS, PLUGIN QUE TRAS OS PROBLEMAS DO ZABBIX*/
+    .ReactTable .rt-thead.-header {
+      box-shadow: none;
+      background: rgba(0, 0, 0, 0.2) !important;
+      border: 1px solid rgba(204, 204, 220, 0.12) !important;
+      border-radius: 2rem !important;
+    }
+
+    .panel-problems .ReactTable .rt-tr .rt-td.custom-expander i {
+      color: white !important;
+    }
+
+    /*DIV PARA ALINHAR OS ITENS DENTRO DO HEADER*/
+    .ReactTable .rt-thead.-header .rt-th {
+      text-align: center !important;
+    }
+
+
+
+    /*DIV PARA EDITAR O TEXTO DO PLUGIN*/
+    .ReactTable .rt-thead .rt-resizable-header-content {
+      color: #FFFFFF !important;
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+      text-transform: uppercase;
+    }
+
+    /*DIV PARA ALTERAR O TEXTO QUANDO NÃO EXISTE PROBLEMAS*/
+    .panel-problems .ReactTable .rt-noData {
+      color: #FFFFFF !important;
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.2rem !important;
+      text-transform: uppercase;
+    }
+
+    /*DIV PARA ALTERAR O TEXTO DO BOTÃO DE NEXT E PREVIOUS*/
+    .ReactTable .-pagination .-btn {
+      color: rgba(255, 255, 255, 1) !important;
+      border: 1px solid rgba(204, 204, 220, 0.12) !important;
+      background: rgba(0, 0, 0, 0.2) !important;
+      color: #FFFFFF !important;
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1rem !important;
+      border-radius: 2rem !important;
+      text-transform: uppercase;
+      padding: 0 !important;
+    }
+
+    /*DIV PARA ALTERAR O TEXTO DO BOTÃO DE NEXT E PREVIOUS (OPACIDADE)*/
+    .ReactTable .-pagination .-btn[disabled] {
+      opacity: 1 !important;
+    }
+
+    /*DIV PARA ALTERAR A SEPARAÇÃO DO TABLE DE PROBLEMAS COM O RODAPÉ*/
+
+    /*DIV PARA MODIFICAR OS BOTOES DE PAGINAÇÃO DO ZABBIX PROBLEMS*/
+    .ReactTable .-pagination input,
+    .ReactTable .-pagination select {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+      color: #FFFFFF !important;
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+      text-align: center !important;
+      border: 1px solid rgba(204, 204, 220, 0.12) !important;
+    }
+
+    /*DIV PARA MODIFICAR OS BACKGROUND DOS BOTÕES DE PAGINAÇÃO DO ZABBIX PROBLEMS*/
+    .ReactTable .-pagination input,
+    .ReactTable .-pagination select {
+      border-radius: 2rem !important;
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1rem !important;
+    }
+
+    /*DIV QUE MODIFICA ALTURA DO HEADER QUANDO PAINEL ESTÁ SEM O TRANSPARENT HABILITADO*/
+    .panel-problems .ReactTable .rt-thead.-header {
+      height: 2em !important;
+    }
+
+    /*FIM DA SESSÃO DO ZABBIX PROBLEMS/
+
+
+    /*DIV PARA EDITAR O STAT*/
+    .css-kuoxoh-panel-content>div {
+      border-radius: 2rem;
+    }
+
+    /*DIV PARA EDITAR O STAT*/
+    .css-kuoxoh-panel-content {
+      color: white;
+    }
+
+    /*SESSÃO DO STAT DO GRAFANA*/
+    .css-kuoxoh-panel-content span {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    /*FIM DA SESSÃO DO STAT DO GRAFANA*/
+
+    /* PAINEIS DO GRAFANA */
+    .css-1ijfwvk-panel-container {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 1rem;
+      border: 1px solid rgba(204, 204, 220, 0.25);
+    }
+
+    /*.css-kuoxoh-panel-content span {
+      color: white;
+    }*/
+
+    /*FIM DA SESSÃO DOS PAINEIS DO GRAFANA */
+
+    /* INICIO DA SESSÃO DAS ROW */
+    .css-1d3xu67-Icon {
+      fill: white !important;
+    }
+
+    .dashboard-row__title {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+    }
+
+    .dashboard-row__panel_count {
+      font-size: 1.5rem !important;
+    }
+
+    /*  FIM DA SESSÃO DAS ROW */
+
+
+
+    /*INICIO DA SESSÃO DOS TABLE DO GRAFANA */
+
+    .css-1kfgvg7-thead {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #021C2C);
+      padding: 0;
+      border-bottom: none;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    /*TEXTO DO TABLE EM ALGUNS GRAFANA */
+    .css-1e8ylo6-row {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    /*DIV DO HEADER DA TABLE */
+    .css-1plr551 {
+      padding: 1rem;
+    }
+
+    .css-1ej1m3x-panel-title {
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.35rem !important;
+      color: white !important;
+      padding: 1rem;
+    }
+
+    .css-119zpr0 {
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+      padding: 1rem !important;
+    }
+
+    .css-1jj2cky-tableContentWrapper {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    /*TEXTO DO TABLE */
+    .css-8fjwhi-row {
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    }
+
+    .css-8fjwhi-row:last-child {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 0 0 1rem 1rem;
+    }
+
+    .css-1jj2cky-tableContentWrapper {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    /*FIM DA SESSÃO DO TABLE */
+
+    /*BACKGROUND DO TIME SERIES
+    .uplot canvas {
+      background: rgba(0, 0, 0, 1);
+      border-radius: 1rem;
+    }
+    */
+
+
+    /*HEADER DA LEGEND DO TIME SERIES*/
+    .css-180sqb0,
+    .css-1l1pgpn {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+
+    /*TEXTO DA LEGEND DO TIME SERIES*/
+
+    .css-7pp3mx-LegendLabel {
+      text-transform: uppercase;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    /*LINHA DE MAX, LAST E MEAN(TEXTO) DA LEGEND DO TIME SERIES*/
+    .css-s2uf1z {
+      color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    /*ICONES DE COR DA LEGENDA DO TIME SERIES*/
+    .css-1aj5l6t {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /*FIM DA SESSÃO DA LEGEND DO TIME SERIES*/
+
+    .css-n39kqr-cellContainerOverflow {
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .css-2qng6u-panel-container {
+      background: rgba(0, 0, 0, 0.2);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 1rem;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+      text-align: center;
+    }
+
+    .css-11qjisw {
+      height: 100%;
+    }
+
+    .css-1i88p6p {
+      width: 100%;
+      margin: 0;
+    }
+
+    .css-m0z7c1 {
+      height: 100%;
+      margin: 0;
+    }
+
+    /*INICIO DA SESSÃO BUSINESS VARIABLE*/
+    .css-1nmqu8c-input-wrapper {
+      background: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      /* Define a largura como 100% */
+      height: 100%;
+      /* Define a altura como 100% */
+      border: 0;
+      color: #FFFFFF;
+      border-radius: 2rem;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    /*TEXTO DO BUSINESS*/
+    .css-8nwx1l-singleValue {
+      color: #FFFFFF;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    /*HEADER LAYOUT*/
+    .css-m0z7c1 label {
+      color: #FFFFFF;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 2rem;
+      padding: 1rem;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    /*TEXTO QUANDO A VARIAVEL É NUMERO*/
+    .css-1pc1kg0-grafana-select-multi-value-container {
+      color: rgba(255, 255, 255, 1);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0);
+    }
+
+    /*FIM DA SESSÃO BUSINESS VARIABLE*/
+
+
+    .dashboard-row--collapsed {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+
+
+    /*INCIO DA SESSÃO DO HEADER */
+
+    /* Contêiner principal do banner */
+    .flowbix-banner-container {
+      background: rgba(0, 0, 0, 0.2);
+      /* Fundo preto */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      position: relative;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+      border-radius: 5rem;
+    }
+
+    /* Contêiner do conteúdo do banner */
+    .flowbix-banner-content {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #FFFFFF;
+      /* Texto branco */
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    /* Estilo do logo */
+    .flowbix-logo {
+      height: 6rem;
+      /* Ajuste o tamanho conforme necessário */
+      width: auto;
+    }
+
+    /* Estilo do texto */
+    .flowbix-text {
+      font-size: 2.5rem;
+      color: #FFFFFF !important;
+      /* Texto branco */
+      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      /* Espaço entre o texto e o ícone */
+    }
+
+    /* Barra verde antes do texto */
+    .flowbix-divider {
+      color: #FFFFFF !important;
+      /* Verde Auzac */
+      font-size: 3rem;
+    }
+
+    .css-n39kqr-cellContainerOverflow {
+      color: white;
+    }
+
+    .css-18yh62t-panel-container {
+      border-radius: 1rem;
+      border: 1px solid white;
+      background-color: rgba(0, 14, 28, 1);
+      color: white;
+    }
+
+    canvas[data-zr-dom-id="zr_0"] {
+      border-radius: 1rem;
+      overflow: hidden;
+      /* Para garantir que o conteúdo interno respeite o border-radius */
+    }
+
+    /* Estilo do ícone de segurança */
+    .flowbix-security-icon {
+      width: 2.5rem;
+      height: auto;
+    }
+
+    /*FIM DA SESSÃO DO HEADER */
+  </style>
+</head>
+
+<body>
+  <!-- Estrutura do banner -->
+  <div class="flowbix-banner-container">
+    <div class="flowbix-banner-content">
+      <img src="https://storage.googleapis.com/flowbix-img/TimeGrafana/logo-neogridBranco.png" alt="Logo Flowbix" class="flowbix-logo">
+      <span class="flowbix-divider">|</span>
+      <span class="flowbix-text">EXEMPLO
+        <!-- Ícone de segurança embutido ao lado do texto -->
+      <img src="https://img.icons8.com/?size=100&id=2945&format=png&color=FFFFFF" alt="Security Icon" class="flowbix-security-icon">
+      </span>
+    </div>
+  </div>
+</body>
+
+</html>
