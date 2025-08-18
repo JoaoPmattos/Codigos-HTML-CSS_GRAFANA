@@ -6,21 +6,6 @@
 
 ---
 
-## 📦 Componentes disponíveis nesta branch  
-## 📦 Available components in this branch
-
-- 🔹 **Headers**  
-  - `Header_Logo_Icon_Juntos.html` – Cabeçalho com logo e ícone juntos  
-    `Header_Logo_Icon_Juntos.html` – Header with logo and icon combined  
-  - `Header_Logo_Icon_Separado.html` – Cabeçalho com logo e ícone separados  
-    `Header_Logo_Icon_Separado.html` – Header with logo and icon separated
-
-- 🔹 **Sub-Headers**  
-  - `subHeader_Padrão.html` – Subcabeçalho padrão  
-    `subHeader_Padrão.html` – Standard sub-header
-
----
-
 ## 📌 Observações  
 ## 📌 Notes
 
