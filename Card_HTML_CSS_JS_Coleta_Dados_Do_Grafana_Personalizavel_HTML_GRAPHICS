@@ -1,0 +1,346 @@
+//UTILIZAR HTML GRAPHICS NO GRAFANA, CODIGOS SEPARADOS
+
+
+//CSS
+
+// /* --- CARD BASE --- */
+// .cpu-card {
+//   font-family: 'Bebas Neue', 'Inter', sans-serif;
+//   width: 100%;
+//   max-width: 100%;
+//   background-color: #ffffff;
+//   border-radius: 1rem;
+//   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -2px rgba(0, 0, 0, 0.10);
+//   padding: 2rem;
+//   color: #1f2937;
+//   box-sizing: border-box;
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100%;
+// }
+
+// /* Utilities */
+// .mt-4 {
+//   margin-top: 0.5rem;
+// }
+
+// .pt-4 {
+//   padding-top: 1rem;
+// }
+
+// .border-t {
+//   border-top-width: 1px;
+//   border-top-style: solid;
+// }
+
+// .border-gray-200 {
+//   border-top-color: #000000;
+// }
+
+// .text-xs {
+//   font-size: 1.5rem;
+//   line-height: 1rem;
+// }
+
+// .text-gray-500 {
+//   color: #000000;
+//   font-weight: 400;
+//   text-transform: uppercase;
+// }
+
+// /* -------- Lista de infos -------- */
+// .antenna-section {
+//   flex: 1;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .info-table {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   gap: 14px;
+//   margin: 0 auto;
+//   width: 100%;
+//   max-width: 100%;
+//   padding-top: 2px;
+//   padding-bottom: 2px;
+// }
+
+// .info-row {
+//   display: grid;
+//   grid-template-columns: auto 1fr auto;
+//   align-items: center;
+//   column-gap: 10px;
+//   font-size: 1.5rem;
+//   font-weight: 400;
+//   min-height: 50px;
+// }
+
+// .info-row .label {
+//   display: inline-flex;
+//   align-items: center;
+//   gap: 12px;
+//   color: #000000;
+//   font-weight: 400;
+//   min-width: 0;
+// }
+
+// .info-row .value {
+//   text-align: right;
+//   min-width: 60px;
+//   font-weight: 400;
+//   color: #000000;
+// }
+
+// /* Ícone redondo */
+// .icon-bubble {
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 50%;
+//   background: #e0e2e4;
+//   border: 1px solid #000000;
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .icon-bubble svg {
+//   width: 25px;
+//   height: 25px;
+//   color: #0051ff;
+// }
+
+// /* Badge */
+// .badge {
+//   display: inline-block;
+//   padding: 4px 8px;
+//   border-radius: 999px;
+//   font-size: 1.5rem;
+//   font-weight: 400;
+//   background: #e0e2e4;
+//   border: 1px solid #000000;
+// }
+
+// /* Cores do sinal */
+// .signal-bad {
+//   color: #ef4444;
+// }
+
+// .signal-mid {
+//   color: #f59e0b;
+// }
+
+// .signal-good {
+//   color: #16a34a;
+// }
+
+// /* Responsivo */
+// @media (max-width: 400px) {
+//   .info-table {
+//     max-width: 98vw;
+//   }
+// }
+
+// .cpu-card img {
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.75) !important;
+// }
+
+
+
+    //HTML
+
+//     <!DOCTYPE html>
+// <html lang="pt-br">
+// <head>
+//   <meta charset="UTF-8">
+//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//   <title>Card Base</title>
+//   <!-- Importa Bebas Neue -->
+//   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+//   <!-- Link para o CSS externo -->
+//   <link rel="stylesheet" href="style.css">
+// </head>
+// <body>
+//   <div class="cpu-card">
+//     <!-- Logo -->
+//     <div style="width:100%; display:flex; justify-content:center; align-items:center; margin-bottom:14px; margin-top:2px;">
+//       <img src="https://i.ibb.co/0R2D2RDf/antena.png" alt="Logo Serviço"
+//         style="height:60px; max-width:82%; border-radius:12px; box-shadow:0 0 10px #e0e0e0; object-fit:contain;">
+//     </div>
+
+//     <!-- Subtítulo -->
+//     <p id="serviceName" class="text-xs text-gray-500" style="text-align:left; margin-left:8px;">
+//       Detalhes do Cliente:
+//     </p>
+
+//     <!-- Linhas geradas via JS -->
+//     <div class="mt-4 pt-4 border-t border-gray-200 antenna-section">
+//       <div id="infoTable" class="info-table"></div>
+//     </div>
+//   </div>
+
+//   <!-- Script para preencher as informações -->
+//   <script src="script.js"></script>
+// </body>
+// </html>
+
+
+
+//JS
+
+// /* ============ Utils de texto ============ */
+// function norm(s) {
+//   return String(s || '')
+//     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+//     .toLowerCase().trim();
+// }
+// const includesAny = (s, arr) => arr.some(a => norm(s).includes(norm(a)));
+
+// /* ============ Formatações ============ */
+// function dbmScaled(v) {
+//   const n0 = Number(v);
+//   if (isNaN(n0)) return null;
+//   let n = n0;
+//   if (Math.abs(n) > 1000) n = n / 100;
+//   return n;
+// }
+
+// function fmtDbmScaled(v) {
+//   const n = dbmScaled(v);
+//   return (n === null) ? '--' : n.toFixed(1) + ' dBm';
+// }
+
+// function classifySignalFromRaw(v) {
+//   const n = dbmScaled(v);
+//   if (n === null) return '';
+//   if (n >= -60) return 'signal-good';
+//   if (n >= -75) return 'signal-mid';
+//   return 'signal-bad';
+// }
+
+// function fmtRate(v) {
+//   const n = Number(v);
+//   if (isNaN(n)) return '--';
+//   const abs = Math.abs(n);
+//   if (abs >= 1e9) return (n / 1e9).toFixed(2) + ' Gbps';
+//   if (abs >= 1e6) return (n / 1e6).toFixed(2) + ' Mbps';
+//   if (abs >= 1e3) return (n / 1e3).toFixed(2) + ' kbps';
+//   return n + ' bps';
+// }
+
+// function fmtPercent(v) {
+//   const n = Number(v);
+//   if (isNaN(n)) return '--';
+//   return n.toFixed(0) + ' %';
+// }
+
+// function fmtChannelWidth(v) {
+//   const n = Number(v);
+//   if (isNaN(n)) return '--';
+//   if (n >= 1000 && n % 100 === 0) return (n / 100) + ' MHz';
+//   return n + ' MHz';
+// }
+
+// function fmtStatus(v) {
+//   const s = String(v);
+//   if (s === '1') return 'Up';
+//   if (s === '2') return 'Down';
+//   return s || '--';
+// }
+
+// /* ============ Ícones simples por categoria ============ */
+// function icon(type) {
+//   const wifi = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+//     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+//       d="M2 8.82a15.91 15.91 0 0120 0M5 12.5a11.94 11.94 0 0114 0M8.5 16a7.96 7.96 0 017 0M12 20h.01"/>
+//   </svg>`;
+//   const sig = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+//     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11a4 4 0 100-8 4 4 0 000 8z"/>
+//     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 19.5L12 12l-7.5 7.5"/>
+//   </svg>`;
+//   const noise = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+//     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/>
+//   </svg>`;
+//   const status = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+//     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12s2-4 5-4 5 8 8 8 5-4 5-4"/>
+//   </svg>`;
+//   return { wifi, sig, noise, status }[type] || wifi;
+// }
+
+// /* ============ Lê Tabela Field/Last* e monta linhas ============ */
+// const list = [];
+// if (typeof data !== 'undefined' && data.series?.length > 0) {
+//   const s = data.series[0];
+//   const fields = Array.isArray(s.fields) ? s.fields : [];
+//   if (fields.length >= 2) {
+//     const nameCol = fields.find(f => norm(f.name).includes('field')) || fields[0];
+//     const valueCol = fields.find(f => norm(f.name).includes('last')) || fields[1];
+//     const len = Math.min(nameCol?.values?.length ?? 0, valueCol?.values?.length ?? 0);
+//     for (let i = 0; i < len; i++) {
+//       const k = nameCol.values.get(i);
+//       const v = valueCol.values.get(i);
+//       if (k !== undefined) list.push({ key: String(k), value: v });
+//     }
+//   }
+// }
+
+// /* ============ Regras por nome (PT/EN) ============ */
+// function formatByKey(key, value) {
+//   const k = key || '';
+//   if (includesAny(k, ['sinal wireless rx', 'rx signal', 'signal strength']))
+//     return { text: fmtDbmScaled(value), cls: classifySignalFromRaw(value), icon: icon('sig'), label: 'Força de Sinal:' };
+
+//   if (includesAny(k, ['piso de ruído wireless rx', 'piso de ruido wireless rx', 'noise floor']))
+//     return { text: fmtDbmScaled(value), icon: icon('noise'), label: 'Ruído (floor):' };
+
+//   if (includesAny(k, ['potência tx wireless', 'potencia tx wireless', 'tx power']))
+//     return { text: fmtDbmScaled(value), icon: icon('wifi'), label: 'Potência TX:' };
+
+//   if (includesAny(k, ['taxa de transmissão wireless rx', 'taxa de transmissao wireless rx', 'rx rate', 'rx capacity']))
+//     return { text: fmtRate(value), icon: icon('wifi'), label: 'Taxa RX:' };
+
+//   if (includesAny(k, ['taxa de erro tx', 'erro tx']))
+//     return { text: fmtPercent(value), icon: icon('wifi'), label: '% Erro TX em Pacotes:' };
+
+//   if (includesAny(k, ['largura do canal wireless', 'channel width']))
+//     return { text: fmtChannelWidth(value), icon: icon('wifi'), label: 'Largura do Canal:' };
+
+//   if (includesAny(k, ['status da interface', 'operational status', 'interface status']))
+//     return { text: fmtStatus(value), icon: icon('status'), label: 'Status da Interface:' };
+
+//   return { text: String(value), icon: icon('wifi'), label: key + ':' };
+// }
+
+// /* ============ Render ============ */
+// const container = document.querySelector('#infoTable');
+// if (container) {
+//   container.innerHTML = '';
+//   list.forEach(({ key, value }) => {
+//     const { text, cls, icon: icn, label } = formatByKey(key, value);
+
+//     const row = document.createElement('div');
+//     row.className = 'info-row';
+
+//     const left = document.createElement('span');
+//     left.className = 'label';
+//     left.innerHTML = `
+//       <span class="icon-bubble">${icn}</span>
+//       <span>${label}</span>
+//     `;
+
+//     const right = document.createElement('span');
+//     right.className = 'value';
+//     const badge = document.createElement('span');
+//     badge.className = 'badge';
+//     badge.textContent = (text === undefined || text === null || text === '') ? '--' : text;
+//     if (cls) badge.classList.add(cls);
+//     right.appendChild(badge);
+
+//     row.appendChild(left);
+//     row.appendChild(right);
+//     container.appendChild(row);
+//   });
+// }
+// </script>
+
