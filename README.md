@@ -9,13 +9,6 @@ This branch contains HTML and CSS code focused on **menu** components, intended 
 
 ---
 
-## 🔧 Arquivos disponíveis  
-## 🔧 Available files
-
-- `MenuAtualizado.html` – Versão atualizada do menu principal.  
-  `MenuAtualizado.html` – Updated version of the main menu.
-
----
 
 ## 📝 Observações  
 ## 📝 Notes
