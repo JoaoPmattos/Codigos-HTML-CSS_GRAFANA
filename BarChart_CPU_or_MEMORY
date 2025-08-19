@@ -1,0 +1,202 @@
+// -------------------------
+// Configuração ECharts - Grafana
+// -------------------------
+
+// Inicialização dos dados
+let categories = [];
+let values = [];
+
+// ✅ Função para converter bytes para formato legível (SI)
+function formatBytesSI(bytes) {
+  if (bytes === 0) return '0 B';
+  const k = 1000;
+  const sizes = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const value = bytes / Math.pow(k, i);
+  return `${value.toFixed(2)} ${sizes[i]}`;
+}
+
+// Controlador de exibição dos nomes das categorias
+const showExFlowbix = false;
+
+// Função para limpar o nome da categoria corretamente
+function cleanCategoryName(category) {
+  const categoryString = (typeof category === 'string')
+    ? category
+    : ((category && category.text) ? category.text : String(category));
+  const match = categoryString.match(/Client\s+[^\:]+/);
+  if (match) {
+    return match[0];
+  }
+  return categoryString;
+}
+
+// --- Processar os dados do Grafana ---
+const frames = (context && context.panel && context.panel.data && context.panel.data.series) || [];
+
+frames.forEach((series) => {
+  let categoryFieldIndex = null;
+  let valueFieldIndex = null;
+
+  // Encontrar o primeiro campo string (categoria) e o primeiro campo numérico (valor)
+  series.fields.forEach((field, index) => {
+    if (field.type === 'string' && categoryFieldIndex === null) {
+      categoryFieldIndex = index;
+    }
+    if (field.type === 'number' && valueFieldIndex === null) {
+      valueFieldIndex = index;
+    }
+  });
+
+  if (categoryFieldIndex !== null && valueFieldIndex !== null) {
+    const categoryValues = series.fields[categoryFieldIndex].values;
+    const numericValues = series.fields[valueFieldIndex].values;
+
+    // Garantir que iteramos até o mínimo comprimento disponível
+    const len = Math.min(categoryValues.length, numericValues.length);
+
+    for (let i = 0; i < len; i++) {
+      const category = categoryValues.get(i);
+      const value = numericValues.get(i);
+      const cleanedCategory = cleanCategoryName(category);
+
+      categories.push(cleanedCategory || `Category ${i}`);
+
+      const num = Number(value);
+      values.push(Number.isFinite(num) ? num : 0);
+    }
+  }
+});
+
+// Substituir todas as categorias por "Ex Flowbix" ou manter o nome original
+if (showExFlowbix) {
+  categories = categories.map(() => 'Ex Flowbix');
+}
+
+// Fallback para quando não houver dados (evita gráfico vazio/erros)
+if (!categories.length || !values.length) {
+  categories = ['Sem dados'];
+  values = [0];
+}
+
+// -------------------------
+// Configuração do gráfico
+// -------------------------
+const option = {
+  backgroundColor: 'rgba(0, 0, 0, 0)',
+  title: {
+    text: '',
+    left: 'center',
+    top: '2%',
+    textStyle: {
+      color: '#FFFFFF',
+      fontWeight: 400,
+      fontSize: 20,
+      fontFamily: 'Bebas Neue, sans-serif',
+    },
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow',
+    },
+    formatter: (params) => {
+      if (!params || !params.length) return '';
+      const formattedBytes = formatBytesSI(params[0].value);
+      return `${params[0].name}: ${formattedBytes}`;
+    },
+  },
+  legend: {
+    show: false,
+  },
+  grid: {
+    left: '5%',
+    right: '5%',
+    bottom: '10%',
+    top: '10%',
+    containLabel: true,
+  },
+  xAxis: {
+    type: 'category',
+    data: categories,
+    axisLabel: {
+      color: '#FFFFFF',
+      fontFamily: 'Bebas Neue, sans-serif',
+      fontSize: 16,
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#FFFFFF',
+      },
+    },
+    axisTick: {
+      show: false,
+    },
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: {
+      color: '#FFFFFF',
+      fontFamily: 'Bebas Neue, sans-serif',
+      fontSize: 16,
+      formatter: (value) => formatBytesSI(value),
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#FFFFFF',
+      },
+    },
+    axisTick: {
+      show: false,
+    },
+    splitLine: {
+      show: true,
+      lineStyle: { color: 'rgba(255,255,255,0.15)' }
+    }
+  },
+  series: [
+    {
+      name: 'Memory Usage',
+      type: 'bar',
+      data: values,
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 25,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 128, 128, 1)',
+          borderWidth: 2,
+          borderColor: 'rgba(0, 0, 0, 0.5)',
+        },
+      },
+      itemStyle: {
+        borderWidth: 2,
+        borderColor: 'rgba(0, 0, 0, 0.5)',
+        shadowBlur: 25,
+        shadowColor: 'rgba(0, 128, 128, 1)',
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        borderRadius: [10, 10, 0, 0],
+        color: new context.echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: '#00E96A' },
+          { offset: 1, color: '#217571' }
+        ]),
+      },
+      label: {
+        show: true,
+        position: 'top',
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontFamily: 'Bebas Neue, sans-serif',
+        formatter: (params) => {
+          const formattedBytes = formatBytesSI(params.value);
+          return `${formattedBytes}`;
+        },
+      },
+      // Ajustes visuais adicionais (opcional)
+      barMaxWidth: 40,
+      animationDuration: 600,
+    },
+  ],
+};
+
+return option;
