@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botões com Animação de Dust</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<style>  
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /*background-image: url('https://w.wallhaven.cc/full/5g/wallhaven-5g22q5.png');*/
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, #EDEDED, #DADADA, #C4C4C4, #DADADA, #EDEDED);
+        background-size: cover;
+        background-image: url(''); /*WALLPAPER MENU BACKGROUND*/
+    }
+
+    .css-1upb6pr {
+        color: black;
+        font-size: 1.5rem;
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+    }
+
+    .css-12dgmru {
+        color: rgba(0, 0, 0, 1);
+    }
+
+    .css-12dgmru button {
+        color: rgba(0, 0, 0, 1);
+
+    }
+
+    .background {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: rgba(240, 235, 225, 0.15);
+        position: relative;
+        overflow: hidden;
+        border-radius: 2rem;
+    }
+
+    /* Container para as partículas de poeira */
+    .dust-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+
+    /* Criando partículas flutuantes */
+    .dust {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background-color: white;
+        opacity: 0.3;
+        border-radius: 50%;
+        animation: floatDust linear infinite;
+        background-color: rgba(245, 166, 35, 0.85);
+    }
+
+    /* Animação das partículas */
+    @keyframes floatDust {
+        0% {
+            transform: translateY(0) scale(0.5);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-100px) scale(1.2);
+            opacity: 0;
+        }
+    }
+
+    /* Estilo para o contêiner de botões */
+    .button-container {
+        width: 100%;
+        max-width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+
+    /* Estilo para cada linha de botões */
+    .button-row {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    /* Estilo dos botões */
+    .button {
+        position: relative;
+        padding: 1.5rem;
+        background-color: rgba(0, 42, 94, 0.85);
+        color: #ffffff;
+        font-weight: 400;
+        font-size: 1.5rem;
+        border-radius: 15rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        border: 2px solid #0071C5;
+        outline: none;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        min-width: 15rem;
+        max-width: 20rem;
+        text-align: center;
+        white-space: nowrap;
+        color: white !important;
+        font-family: 'Bebas Neue', sans-serif !important;
+        font-weight: 400 !important;
+    }
+
+    /* Estilo dos ícones */
+    .icon {
+        width: 2rem;
+        height: 2rem;
+        transition: all 0.3s ease-in-out;
+        flex-shrink: 0;
+    }
+
+    /* Efeito hover dos botões */
+    .button:hover {
+        transform: scale(1.05);
+        background: #F5A623;
+        border-color: #0071C5;
+        text-decoration: none !important;
+    }
+
+    .button:hover .icon {
+        transform: translateX(4px);
+    }
+
+    /* Efeito shine nos botões */
+    .button:hover::before {
+        animation: shine 1.5s ease-out infinite;
+    }
+
+    .button::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100%;
+        background-image: linear-gradient(120deg,
+                rgba(255, 255, 255, 0) 30%,
+                rgba(255, 255, 255, 0.8),
+                rgba(255, 255, 255, 0) 70%);
+        top: 0;
+        left: -100px;
+        opacity: 0.6;
+    }
+
+    @keyframes shine {
+        0% {
+            left: -100px;
+        }
+
+        60% {
+            left: 100%;
+        }
+
+        to {
+            left: 100%;
+        }
+    }
+</style>
+
+<body>
+    <!-- background-color: rgba(0, 0, 0, 0.2); -->
+    <div class="background">
+        <!-- Animação de Dust -->
+        <div class="dust-container"></div>
+
+        <div class="button-container">
+            <!-- Primeira linha de botões -->
+            <div class="button-row">
+                <a href="" class="button">
+                    EXEMPLO
+                    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                        <path clip-rule="evenodd"
+                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="" class="button"> EXEMPLO
+                    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                        <path clip-rule="evenodd"
+                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="" class="button"> EXEMPLO
+                    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                        <path clip-rule="evenodd"
+                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Segunda linha de botões -->
+            <div class="button-row">
+                <a href="" class="button"> EXEMPLO
+                    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                        <path clip-rule="evenodd"
+                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                            fill-rule="evenodd"></path>
+                    </svg> </a>
+                <a href="" class="button"> EXEMPLO
+                    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                        <path clip-rule="evenodd"
+                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createDustParticles() {
+            const dustContainer = document.querySelector('.dust-container');
+
+            for (let i = 0; i < 65; i++) { 
+                let dust = document.createElement('div');
+                dust.classList.add('dust');
+
+                let randomX = Math.random() * 100;
+                let randomY = Math.random() * 100;
+                let randomDelay = Math.random() * 5;
+                let randomDuration = 3 + Math.random() * 2;
+
+                dust.style.left = `${randomX}%`;
+                dust.style.top = `${randomY}%`;
+                dust.style.animationDuration = `${randomDuration}s`;
+                dust.style.animationDelay = `${randomDelay}s`;
+
+                dustContainer.appendChild(dust);
+            }
+        }
+
+        createDustParticles();
+    </script>
+</body>
+
+</html>
