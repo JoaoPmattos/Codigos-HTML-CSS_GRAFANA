@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowbix Banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: linear-gradient(180deg, #02070A, #102A3D, #0B1E2E, #02070A);
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    /* TEXTO DO STAT, OU PAINEIS E TALS */
+
+
+    /* TEXTO DO STAT, OU PAINEIS E TALS */
+
+
+    /* PAINEIS DO GRAFANA */
+    .css-1ijfwvk-panel-container {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 1.5rem;
+      color: white;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+    }
+
+    .css-kuoxoh-panel-content span {
+      color: white;
+    }
+
+    /*FIM DA SESSÃO DOS PAINEIS DO GRAFANA */
+
+    /* INICIO DA SESSÃO DAS ROW */
+    .css-1d3xu67-Icon {
+      fill: white !important;
+    }
+
+    .css-1upb6pr,
+    .css-1fxx2s4 {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+    }
+
+    .dashboard-row__title {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+    }
+
+    .dashboard-row__panel_count {
+      font-size: 1.5rem !important;
+    }
+
+    /* FIM DA SESSÃO DAS ROW */
+
+    /*PAINEL TEXT DO GRAFANA*/
+    .css-7mshyc-panel-container,
+    .css-itdw1b-panel-container {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 1.5rem;
+
+    }
+
+    .css-itdw1b-panel-container span {
+      color: white !important;
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+
+    }
+
+    /*PAINEL TEXT DO GRAFANA*/
+
+    /*TITULO DE QUALQUER PAINEL DO GRAFANA */
+    .css-4sw7w0 {
+      color: rgba(255, 255, 255, 1);
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem;
+    }
+
+    .css-biljvk-panel-title {
+      background: rgba(0, 0, 0, 0.2);
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      border-radius: 1rem;
+    }
+
+    /*TITULO DE QUALQUER PAINEL DO GRAFANA */
+
+
+
+    /*INICIO DA SESSÃO DOS TABLE DO GRAFANA */
+
+    .css-1kfgvg7-thead {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #07121B);
+      /* Gradiente do azul claro para o azul escuro */
+      padding: 0;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .css-119zpr0,
+    .css-usje0n {
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+      text-transform: uppercase !important;
+    }
+
+    .css-1jj2cky-tableContentWrapper {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .css-8fjwhi-row {
+      border: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    .css-8fjwhi-row:last-child {
+      border-bottom: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    .css-1jj2cky-tableContentWrapper {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+
+    .css-8fjwhi-row {
+      color: rgba(255, 255, 255, 1) !important;
+      font-family: "Bebas Neue", sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.5rem !important;
+      text-transform: uppercase !important;
+    }
+
+    /*FIM DA SESSÃO DO TABLE */
+
+    /*BACKGROUND DO TIME SERIES
+    .uplot canvas {
+      background: rgba(0, 0, 0, 1);
+      border-radius: 1rem;
+    }
+    */
+
+
+    /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */
+    .ol-viewport {
+      border-radius: 1rem !important;
+      border: 1px solid rgba(204, 204, 220, 0.25) !important;
+    }
+
+    /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */
+
+    .css-1bi47rh {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 1);
+    }
+
+
+    /*HEADER DA LEGEND DO TIME SERIES*/
+    .css-180sqb0,
+    .css-1l1pgpn {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .css-180sqb0,
+    .css-1l1pgpn {
+      color: rgba(255, 255, 255, 1);
+    }
+
+
+    /*TEXTO DA LEGEND DO TIME SERIES*/
+
+    .css-7pp3mx-LegendLabel {
+      text-transform: uppercase;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    /*LINHA DE MAX, LAST E MEAN(TEXTO) DA LEGEND DO TIME SERIES*/
+    .css-s2uf1z {
+      color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    /*ICONES DE COR DA LEGENDA DO TIME SERIES*/
+    .css-1aj5l6t {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /*FIM DA SESSÃO DA LEGEND DO TIME SERIES*/
+
+    .css-n39kqr-cellContainerOverflow {
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .css-2qng6u-panel-container {
+      background: rgba(0, 0, 0, 0.2);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      border: none;
+    }
+
+    .css-11qjisw {
+      height: 100%;
+    }
+
+    .css-1i88p6p {
+      width: 100%;
+      margin: 0;
+      padding: 0rem 0rem 0rem 2rem;
+    }
+
+    .css-m0z7c1 {
+      height: 100%;
+      margin: 0;
+    }
+
+    /*INICIO DA SESSÃO BUSINESS VARIABLE*/
+    .css-1nmqu8c-input-wrapper,
+    .css-rebjtg-input-wrapper {
+      background: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      /* Define a largura como 100% */
+      height: 100%;
+      /* Define a altura como 100% */
+      border: 0;
+      color: #FFFFFF;
+      border-radius: 2rem;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    /*TEXTO DO BUSINESS*/
+    .css-8nwx1l-singleValue {
+      color: #FFFFFF;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    /*HEADER LAYOUT*/
+    .css-m0z7c1 label {
+      color: rgba(255, 255, 255, 1);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 2rem;
+      padding: 1rem;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+    }
+
+    /*TEXTO QUANDO A VARIAVEL É NUMERO*/
+    .css-1pc1kg0-grafana-select-multi-value-container {
+      color: rgba(255, 255, 255, 1);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0);
+    }
+
+    /*TEXTO "CHOOSE" DO BUSINESS VARIABLE*/
+    .css-1n8tjau-placeholder {
+      color: rgba(255, 255, 255, 1);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    /*FIM DA SESSÃO BUSINESS VARIABLE*/
+
+
+    .dashboard-row--collapsed {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .css-n39kqr-cellContainerOverflow {
+      color: white;
+    }
+
+    .css-18yh62t-panel-container {
+      border-radius: 1rem;
+      border: 1px solid white;
+      background-color: rgba(0, 14, 28, 1);
+      color: white;
+    }
+
+    canvas[data-zr-dom-id="zr_0"] {
+      border-radius: 1rem;
+      overflow: hidden;
+      /* Para garantir que o conteúdo interno respeite o border-radius */
+    }
+
+
+
+    /*INCIO DA SESSÃO DO HEADER */
+
+    /* Contêiner principal do banner */
+    .flowbix-banner-container {
+      background: rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: space-between;
+      /* Distribui os elementos nas extremidades */
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border: 1px solid rgba(204, 204, 220, 0.12);
+      border-radius: 5rem;
+      padding: 0 2rem;
+      /* Adiciona espaçamento nas laterais */
+    }
+
+    /* Contêiner do conteúdo do banner */
+    .flowbix-banner-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      /* Mantém os logos separados */
+    }
+
+    /* Estilo das imagens */
+    .logo_direita {
+      height: 3rem;
+      /* Ajuste o tamanho conforme necessário */
+      width: auto;
+    }
+
+    .flowbix-logo {
+      height: 8rem;
+      /* Ajuste o tamanho conforme necessário */
+      width: auto;
+    }
+
+    /* Título no centro */
+    .flowbix-text {
+      font-size: 3rem;
+      color: #4DEF71;
+      font-family: "Bebas Neue", sans-serif;
+      text-align: center;
+      flex-grow: 1;
+      /* Garante que o título ocupe espaço e fique centralizado */
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Ajusta para garantir que as imagens fiquem corretamente posicionadas */
+    .left-logo {
+      margin-right: auto;
+    }
+
+    .right-logo {
+      margin-left: auto;
+    }
+
+    /*FIM DA SESSÃO DO HEADER */
+  </style>
+</head>
+
+<body>
+  <!-- Estrutura do banner -->
+  <div class="flowbix-banner-container">
+    <!-- Logo da esquerda -->
+    <img src="https://storage.googleapis.com/flowbix-img/LogoFBX_noBck.png" alt="Logo Flowbix" class="flowbix-logo left-logo">
+
+    <!-- Título no centro -->
+    <span class="flowbix-text">EXEMPLO
+      
+    </span>
+
+    <!-- Logo da direita -->
+    <img src="https://img.icons8.com/?size=100&id=10UYzitjLrSX&format=png&color=FFFFFF" alt="Security Icon" class="logo_direita">
+  </div>
+</body>
+
+
+</html>
