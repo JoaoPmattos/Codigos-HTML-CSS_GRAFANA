@@ -6,17 +6,6 @@
 
 ---
 
-## 📦 Componentes disponíveis nesta branch  
-## 📦 Available components in this branch
-
-- 🔹 **Menus**
-  - `MenuAtualizado.html` – Menu principal atualizado  
-    `MenuAtualizado.html` – Updated main menu
-
-- `MenuAtualizado2.html` – Menu principal atualizado
-- `MenuAtualizado2.html` – Updated main menu
----
-
 ## 📌 Observações  
 ## 📌 Notes
 
