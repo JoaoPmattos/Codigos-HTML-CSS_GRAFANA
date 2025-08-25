@@ -1,22 +1,17 @@
-# Códigos HTML/CSS – Menus  
-# HTML/CSS Code – Menus
+Códigos HTML/CSS/JS – Cards
+HTML/CSS/JS Code – Cards
 
-📂 **Conteúdo desta branch:**  
-📂 **Branch contents:**
+📂 Conteúdo desta branch:
+📂 Branch contents:
 
-Esta branch contém códigos HTML e CSS focados em componentes de **menu** para uso com dashboards como o Grafana.  
-This branch contains HTML and CSS code focused on **menu** components, intended for use with dashboards like Grafana.
+Esta branch contém exemplos de cards desenvolvidos em HTML, CSS e alguns com JavaScript, voltados para uso em dashboards como o Grafana.
+This branch contains card examples built with HTML, CSS, and some with JavaScript, intended for use in dashboards like Grafana.
 
----
+📝 Observações
+📝 Notes
 
+Os arquivos foram criados para facilitar a integração visual em plataformas de monitoramento.
+The files were designed to support visual integration in monitoring platforms.
 
-## 📝 Observações  
-## 📝 Notes
-
-- Esses arquivos são voltados para integração visual com plataformas de monitoramento.  
-  These files are designed for visual integration with monitoring platforms.
-
-- Uso principal: personalização visual no Grafana ou aplicações similares.  
-  Main use: visual customization in Grafana or similar applications.
-
----
+Uso principal: personalização de dashboards no Grafana ou em aplicações semelhantes.
+Main use: dashboard customization in Grafana or similar applications.
